@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Users from './Users'
-import Createuser from './Create'
-import Updateuser from './Update'
+import Users from './Pages/Users'
+import Createuser from './Pages/Create'
+import Updateuser from './Pages/Update'
 function App() {
 
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 
 function Create() {
   const [name,setName] = useState()
@@ -19,31 +20,32 @@ function Create() {
     <form onSubmit={Submit} class="max-w-sm mx-auto">
       <div class="mb-5">
         <label
-          for="email"
+          for="Name"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Name
         </label>
         <input
-          type="email"
-          id="email"
+          type="name"
+          id="name"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="name@flowbite.com"
+          placeholder="Enter username"
           required
           onChange={(e)=>setName(e.target.value)}/>
       
       </div>
       <div class="mb-5">
         <label
-          for="password"
+          for="email"
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Email
         </label>
         <input
-          type="password"
-          id="password"
+          type="email"
+          id="email"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Enter Your Email"
           required
           onChange={(e)=>setEmail(e.target.value)}
         />
@@ -51,16 +53,16 @@ function Create() {
       <div class="flex items-start mb-5">
         <div class="mb-5">
           <label
-            for="email"
+            for="phone"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Phone
           </label>
           <input
-            type="email"
-            id="email"
+            type="phone"
+            id="phone"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="name@flowbite.com"
+            placeholder="Enter phone number..."
             required
             onChange={(e)=>setPhone(e.target.value)}
           />
@@ -70,29 +72,29 @@ function Create() {
             for="email"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
-            City
+            Country
           </label>
           <input
-            type="email"
-            id="email"
+            type="country"
+            id="country"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="name@flowbite.com"
+            placeholder="Enter your city"
             required
             onChange={(e)=>setCity(e.target.value)}
           />
         </div>
         <div class="mb-5">
           <label
-            for="email"
+            for="address"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Address
           </label>
           <input
-            type="email"
-            id="email"
+            type="address"
+            id="address"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="name@flowbite.com"
+            placeholder="Enter your Address"
             required
             onChange={(e)=>setAddress(e.target.value)}
           />

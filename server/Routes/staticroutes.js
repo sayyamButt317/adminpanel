@@ -1,6 +1,5 @@
 const express = require('express')
 const app =express()
-
 const UserModel = require('../Model/User')
 
 app.get('/create',(req, res) =>{
