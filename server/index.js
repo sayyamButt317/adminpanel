@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const app =express()
 const Routes =require('./Routes/staticroutes')
+const UserModel = require('../Model/User')
 app.use(cors())
 app.use(express.json())
 

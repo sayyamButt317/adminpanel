@@ -1,8 +1,22 @@
 import React from "react";
+import { useState } from "react";
 
 function Create() {
+  const [name,setName] = useState()
+  const [email,setEmail] = useState() 
+  const [phone,setPhone] = useState()
+  const [address,setAddress] = useState()
+  const [city,setCity] = useState()
+
+  const Submit = (e)=>{
+    e.preventDefault();
+    axios.post("http://localhost:3001/create",{name,email,phone,address,city})
+    .then(result=>console.log(result))
+    .catch(err=>console.log(err))
+  }
+  
   return (
-    <form class="max-w-sm mx-auto">
+    <form onSubmit={Submit} class="max-w-sm mx-auto">
       <div class="mb-5">
         <label
           for="email"
@@ -16,7 +30,8 @@ function Create() {
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="name@flowbite.com"
           required
-        />
+          onChange={(e)=>setName(e.target.value)}/>
+      
       </div>
       <div class="mb-5">
         <label
@@ -30,6 +45,7 @@ function Create() {
           id="password"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           required
+          onChange={(e)=>setEmail(e.target.value)}
         />
       </div>
       <div class="flex items-start mb-5">
@@ -46,6 +62,7 @@ function Create() {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="name@flowbite.com"
             required
+            onChange={(e)=>setPhone(e.target.value)}
           />
         </div>
         <div class="mb-5">
@@ -61,6 +78,7 @@ function Create() {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="name@flowbite.com"
             required
+            onChange={(e)=>setCity(e.target.value)}
           />
         </div>
         <div class="mb-5">
@@ -76,6 +94,7 @@ function Create() {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="name@flowbite.com"
             required
+            onChange={(e)=>setAddress(e.target.value)}
           />
         </div>
       </div>
