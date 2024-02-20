@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 function Users() {
   const [users, setUsers] = useState([
     {
@@ -10,7 +12,11 @@ function Users() {
       city: "Lahore"
     }
   ]);
-
+  useEffect(()=>{
+    axios.get("http://localhost:3001")
+    .then(result=>  setUsers(result.data))
+    .catch(err => console.error(err))
+  },[])
   return (
     <div className="vh-100 bg-primary d-flex justify-content-center align-items-center">
       <div className="w-50 bg-white rounded p-3">
