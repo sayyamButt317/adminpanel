@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import {useNavigate} from 'react-router-dom'
 
 function Create() {
   const [name,setName] = useState()
@@ -8,11 +9,13 @@ function Create() {
   const [phone,setPhone] = useState()
   const [address,setAddress] = useState()
   const [city,setCity] = useState()
+  const navigate = useNavigate()
 
   const Submit = (e)=>{
     e.preventDefault();
     axios.post("http://localhost:3001/create",{name,email,phone,address,city})
     .then(result=>console.log(result))
+    navigate('/')
     .catch(err=>console.log(err))
   }
   
