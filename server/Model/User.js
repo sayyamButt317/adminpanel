@@ -1,26 +1,34 @@
-const moongose = require('mongoose')
+const moongose = require("mongoose");
 const UserSchema = new moongose.Schema({
-    name:{
-        type:String,
-        required:true
-    },
-    email:{
-        type:String,
-        required:true
-    },
-    phone:{
-        type:String,
-        required:true
-    },
-    address:{
-        type:String,
-        required:true
-    },
-    city:{
-        type:String,
-        required:true
-    }
-})
+  productName: {
+    type: String,
+    required: true,
+  },
+  productDescription: {
+    type: String,
+    required: true,
+  },
+  actualPrice: {
+    type: String,
+    required: true,
+  },
+  discountedPrice: {
+    type: String,
+    required: true,
+  },
+  brandName: {
+    type: String,
+    required: true,
+  },
+  Category: {
+    type: String,
+    required: true,
+  },
+  amountInStock: {
+    type: Number,
+    required: true,
+  },
+});
 
-const UserModel = moongose.model('User',UserSchema)
-module.exports = UserModel
+const UserModel = moongose.model("User", UserSchema);
+module.exports = UserModel;

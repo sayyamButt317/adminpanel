@@ -1,24 +1,20 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 function Create() {
-  const [name,setName] = useState()
-  const [email,setEmail] = useState() 
-  const [phone,setPhone] = useState()
-  const [address,setAddress] = useState()
-  const [city,setCity] = useState()
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
-  const Submit = (e)=>{
+  const Submit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:3001/create",{name,email,phone,address,city})
-    .then(result=>console.log(result))
-    navigate('/')
-    .catch(err=>console.log(err))
-  }
-  
+    axios.post("http://localhost:3001/create").then((response) => {
+      setMessage("Success");
+      navigate("/", { state: { user: response.data } });
+    });
+  };
+
   return (
     <form onSubmit={Submit} class="max-w-sm mx-auto">
       <div class="mb-5">
@@ -34,8 +30,8 @@ function Create() {
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Enter username"
           required
-          onChange={(e)=>setName(e.target.value)}/>
-      
+          onChange={(e) => setName(e.target.value)}
+        />
       </div>
       <div class="mb-5">
         <label
@@ -50,7 +46,7 @@ function Create() {
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Enter Your Email"
           required
-          onChange={(e)=>setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div class="flex items-start mb-5">
@@ -67,7 +63,7 @@ function Create() {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Enter phone number..."
             required
-            onChange={(e)=>setPhone(e.target.value)}
+            onChange={(e) => setPhone(e.target.value)}
           />
         </div>
         <div class="mb-5">
@@ -83,7 +79,7 @@ function Create() {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Enter your city"
             required
-            onChange={(e)=>setCity(e.target.value)}
+            onChange={(e) => setCity(e.target.value)}
           />
         </div>
         <div class="mb-5">
@@ -99,7 +95,7 @@ function Create() {
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Enter your Address"
             required
-            onChange={(e)=>setAddress(e.target.value)}
+            onChange={(e) => setAddress(e.target.value)}
           />
         </div>
       </div>
