@@ -1,0 +1,13 @@
+//add whole file to use shade cnn plugin
+
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+          "@/*": [
+            "./src/*"
+          ]
+        }
+    }
+ }
+ 

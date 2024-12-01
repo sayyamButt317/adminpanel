@@ -1,24 +1,37 @@
-import { useState } from 'react'
-import './App.css'
-import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Users from './Pages/Users'
-import Createuser from './Pages/Create'
-import Updateuser from './Pages/Update'
-function App() {
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
+import Aos from "aos";
+import Users from './Pages/Users';
+import Createuser from './Pages/Create';
+import Updateuser from './Pages/Update';
+import AdminViewComponent from './Pages/AdminView';
 
-
+function Navbar() {
   return (
-    <div>
-<BrowserRouter>
-<Routes>
-  <Route path='/' element={<Users/>}></Route>
-  <Route path='/create' element={<Createuser/>}></Route>
-  <Route path='/update' element={<Updateuser/>}></Route>
-
-</Routes>
-</BrowserRouter>
-    </div>
-  )
+    <nav>
+      <Link to="/">Users</Link>
+      <Link to="/create">Create User</Link>
+      <Link to="/update">Update User</Link>
+      <Link to="/admin">Admin View</Link>
+    </nav>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Users  />} />
+          <Route path="/create" element={<Createuser />} />
+          <Route path="/update" element={<Updateuser />} />
+          <Route path="/admin" element={<AdminViewComponent />} />
+          <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;

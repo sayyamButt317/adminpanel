@@ -9,7 +9,7 @@ app.use(express.json())
 
 mongoose.connect("mongodb://127.0.0.1:27017/AdminPanel")
 
-app.use("/",() => Routes)
+app.use("/admin",() => Routes)
 
 app.listen(3001,()=>{
     console .log("server started")
