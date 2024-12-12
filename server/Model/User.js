@@ -1,4 +1,4 @@
-const moongose = require("mongoose");
+import moongose from "mongoose";
 const UserSchema = new moongose.Schema({
   productName: {
     type: String,
@@ -31,4 +31,4 @@ const UserSchema = new moongose.Schema({
 });
 
 const UserModel = moongose.model("User", UserSchema);
-module.exports = UserModel;
+export default UserModel;

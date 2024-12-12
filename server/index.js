@@ -1,16 +1,17 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const app =express()
-const Routes =require('./Routes/staticroutes')
+import dotenv from "dotenv";
+import { app } from "./App.js";
+import { connectionDB } from "./db/connection.js";
 
-app.use(cors())
-app.use(express.json())
+// Environment variable configuration
+dotenv.config({
+  path: "./.env",
+});
 
-mongoose.connect("mongodb://127.0.0.1:27017/AdminPanel")
-
-app.use("/admin",() => Routes)
-
-app.listen(3001,()=>{
-    console .log("server started")
-})
+// Connect to MongoDB
+connectionDB()
+  .then(() => {
+    app.listen(process.env.PORT || 8000, () => {
+      console.log(`Server running on port ${process.env.PORT || 8000}`);
+    });
+  })
+  .catch((err) => console.log(`MongoDB connection failed`, err));
