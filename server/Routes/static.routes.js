@@ -5,7 +5,7 @@ import { Router } from "express";
 
 const router = Router();
 
-router.get("/", async (req, res) => {
+router.get("/getrecord", async (req, res) => {
   try {
     const users = await UserModel.find();
     res.status({ status: 200, data: users });
