@@ -1,4 +1,4 @@
-import UserModel from "../Model/User";
+import UserModel from "../Model/User.js";
 import { Router } from "express";
 
 const router = Router();
