@@ -11,7 +11,7 @@ app.use(cors());
 app.use(cookieParser());
 
 // Routes Declaration
-app.use("/api/v1",() => Routes)
+app.use("/api", Routes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -20,3 +20,4 @@ app.use((err, req, res, next) => {
 });
 
 export { app };
+

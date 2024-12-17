@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 function Users() {
-  const [users, setUsers] = useState([
-    {
-      name: "Sayyam",
-      email: "sayyambutt317@gmail.com",
-      phone: "03240149841",
-      address: "Walton c-24-26",
-      city: "Lahore"
-    }
-  ]);
+  const [users, setUsers] = useState([]);
   useEffect(()=>{
-    axios.get("/api/v1/getrecord")
+    axios.get("/api/getrecord")
     .then(result=>  setUsers(result.data))
     .catch(err => console.error(err))
   },[])

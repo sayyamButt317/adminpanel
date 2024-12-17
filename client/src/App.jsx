@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
-import Aos from "aos";
 import Users from './Pages/Users';
 import Createuser from './Pages/Create';
 import Updateuser from './Pages/Update';

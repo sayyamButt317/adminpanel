@@ -1,6 +1,4 @@
-import express from "express";
-const app = express();
-import UserModel from "../Model/User.js";
+import UserModel from "../Model/User";
 import { Router } from "express";
 
 const router = Router();
@@ -8,7 +6,7 @@ const router = Router();
 router.get("/getrecord", async (req, res) => {
   try {
     const users = await UserModel.find();
-    res.status({ status: 200, data: users });
+    res.status(200).json({ status: 200, data: users });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -17,22 +15,22 @@ router.get("/getrecord", async (req, res) => {
 router.post("/create", async (req, res) => {
   try {
     const users = await UserModel.create(req.body);
-    res.status({
-      status: 200,
+    res.status(201).json({
+      status: 201,
       message: `data added successfully`,
       data: users,
     });
   } catch (err) {
-    router.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
 });
 
 router.post("/edit", async (req, res) => {
   try {
-    const user = await UserModel.findByIdAndUpdate(req.body._id, req.body.id, {
+    const user = await UserModel.findByIdAndUpdate(req.body._id, req.body, {
       new: true,
     });
-    res.status({
+    res.status(200).json({
       status: 200,
       message: `data updated successfully`,
       data: user,
@@ -45,10 +43,11 @@ router.post("/edit", async (req, res) => {
 router.post("/delete", async (req, res) => {
   try {
     await UserModel.findByIdAndDelete(req.body._id);
-    res.status({ status: 200, message: `data deleted successfully` });
+    res.status(200).json({ status: 200, message: `data deleted successfully` });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
 export default router;
+
