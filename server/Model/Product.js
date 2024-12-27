@@ -2,23 +2,18 @@ import moongose from "mongoose";
 const ProductSchema = new moongose.Schema({
   productName: {
     type: String,
-    required: true,
+    required: [true,'Product Name is Required'],
   },
   productDescription: {
     type: String,
-    required: true,
+    required: [true,'Product Description is Required'],
   },
-  actualPrice: {
+  Price: {
     type: String,
-    required: true,
+    required: [true,'Price is Required'],
   },
   discountedPrice: {
     type: String,
-    required: true,
-  },
-  brandName: {
-    type: String,
-    required: true,
   },
   Category: {
     type: String,
@@ -28,7 +23,7 @@ const ProductSchema = new moongose.Schema({
     type: Number,
     required: true,
   },
-});
+},{timestamps: true});
 
 const ProductModel = moongose.model("Product", ProductSchema);
 export default ProductModel;

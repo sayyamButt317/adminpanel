@@ -23,4 +23,7 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     default: "Pending",
   },
-});
+},{timestamps: true});
+
+const OrderModel = mongoose.model("Order", OrderSchema);
+export default OrderModel;

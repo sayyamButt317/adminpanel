@@ -1,11 +1,13 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import Routes from "./Routes/static.routes.js";
+import Routes from "./Routes/product.routes.js";
+import morgan from "morgan";
 
 const app = express();
 
 // Middleware
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
